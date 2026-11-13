@@ -1,0 +1,13 @@
+{
+    "best_hyperparameters": {
+        "sequence_length": 32,
+        "lstm_units": 32,
+        "dropout_rate": 0.1,
+        "learning_rate": 0.00198,
+        "batch_size": 32
+    },
+    "gbest_validation_rmse": 0.5528,
+    "search_time_seconds": 615.4,
+    "swarm_particles": 8,
+    "iterations": 6
+}

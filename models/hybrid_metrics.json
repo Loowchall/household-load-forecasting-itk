@@ -1,0 +1,13 @@
+{
+    "model_name": "Model D - GA + PSO + LSTM",
+    "mae": 0.3169,
+    "rmse": 0.4616,
+    "r2": 0.5887,
+    "training_time_seconds": 245.84,
+    "n_features": 10,
+    "sequence_length": 32,
+    "lstm_units": 32,
+    "dropout_rate": 0.1,
+    "learning_rate": 0.00198,
+    "batch_size": 32
+}

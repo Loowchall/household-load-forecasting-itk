@@ -1,0 +1,38 @@
+{
+    "system_name": "Mamdani Fuzzy Load Decision Support System",
+    "inputs": {
+        "predicted_power_kw": {
+            "universe": [0.0, 7.0],
+            "unit": "kW",
+            "categories": {
+                "Very Low": {"type": "trapmf", "params": [0.0, 0.0, 0.25, 0.45]},
+                "Low": {"type": "trimf", "params": [0.30, 0.60, 0.95]},
+                "Normal": {"type": "trimf", "params": [0.80, 1.25, 1.80]},
+                "High": {"type": "trimf", "params": [1.60, 2.30, 3.20]},
+                "Peak": {"type": "trapmf", "params": [2.80, 3.80, 7.00, 7.00]}
+            }
+        },
+        "load_change_delta_kw": {
+            "universe": [-2.0, 2.0],
+            "unit": "kW",
+            "categories": {
+                "Decreasing": {"type": "trapmf", "params": [-2.0, -2.0, -0.60, -0.10]},
+                "Steady": {"type": "trimf", "params": [-0.25, 0.0, 0.25]},
+                "Increasing": {"type": "trapmf", "params": [0.10, 0.60, 2.0, 2.0]}
+            }
+        }
+    },
+    "output": {
+        "demand_status_score": {
+            "universe": [0.0, 100.0],
+            "categories": {
+                "Very Low": {"range": [0, 20], "color": "#2ca02c"},
+                "Low": {"range": [20, 40], "color": "#1f77b4"},
+                "Normal": {"range": [40, 62], "color": "#ff7f0e"},
+                "High": {"range": [62, 80], "color": "#d62728"},
+                "Peak": {"range": [80, 100], "color": "#7f1416"}
+            }
+        }
+    },
+    "defuzzification_method": "Centroid (Center of Gravity)"
+}

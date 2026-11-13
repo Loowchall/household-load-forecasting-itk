@@ -1,0 +1,15 @@
+{
+    "model_name": "Model B - GA + LSTM",
+    "mae": 0.3351,
+    "rmse": 0.4691,
+    "r2": 0.5750,
+    "training_time_seconds": 198.98,
+    "n_features": 10,
+    "n_features_baseline": 18,
+    "feature_reduction_pct": 44.44,
+    "sequence_length": 24,
+    "lstm_units": 32,
+    "dropout_rate": 0.1,
+    "learning_rate": 0.001,
+    "batch_size": 32
+}

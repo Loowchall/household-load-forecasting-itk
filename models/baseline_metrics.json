@@ -1,0 +1,33 @@
+{
+    "model_name": "Model A - Baseline LSTM",
+    "mae": 0.3263,
+    "rmse": 0.4646,
+    "r2": 0.5830,
+    "training_time_seconds": 221.06,
+    "n_features": 18,
+    "sequence_length": 24,
+    "lstm_units": 32,
+    "dropout_rate": 0.1,
+    "learning_rate": 0.001,
+    "batch_size": 32,
+    "features_used": [
+        "Global_active_power",
+        "Global_reactive_power",
+        "Voltage",
+        "Global_intensity",
+        "Sub_metering_1",
+        "Sub_metering_2",
+        "Sub_metering_3",
+        "Sub_metering_remainder",
+        "gap_lag_1",
+        "gap_lag_2",
+        "gap_lag_3",
+        "gap_lag_24",
+        "rolling_mean_24h",
+        "hour_sin",
+        "hour_cos",
+        "dayofweek_sin",
+        "dayofweek_cos",
+        "is_weekend"
+    ]
+}

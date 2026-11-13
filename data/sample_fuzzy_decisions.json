@@ -1,0 +1,482 @@
+[
+    {
+        "timestamp": "2010-11-24 22:00:00",
+        "actual_kw": 0.4221,
+        "predicted_kw": 0.4264,
+        "delta_kw": 0.0,
+        "fuzzy_score": 27.81,
+        "demand_status": "Low",
+        "color": "#1f77b4",
+        "recommendation": "Beban dasar aktif (kulkas, standby appliances). Kapasitas daya aman."
+    },
+    {
+        "timestamp": "2010-11-24 23:00:00",
+        "actual_kw": 0.3531,
+        "predicted_kw": 0.3607,
+        "delta_kw": -0.069,
+        "fuzzy_score": 17.64,
+        "demand_status": "Very Low",
+        "color": "#2ca02c",
+        "recommendation": "Konsumsi listrik sangat minimal (kondisi malam / rumah kosong). Efisiensi optimal."
+    },
+    {
+        "timestamp": "2010-11-25 00:00:00",
+        "actual_kw": 0.3035,
+        "predicted_kw": 0.3003,
+        "delta_kw": -0.0496,
+        "fuzzy_score": 10.74,
+        "demand_status": "Very Low",
+        "color": "#2ca02c",
+        "recommendation": "Konsumsi listrik sangat minimal (kondisi malam / rumah kosong). Efisiensi optimal."
+    },
+    {
+        "timestamp": "2010-11-25 01:00:00",
+        "actual_kw": 0.2897,
+        "predicted_kw": 0.294,
+        "delta_kw": -0.0138,
+        "fuzzy_score": 10.1,
+        "demand_status": "Very Low",
+        "color": "#2ca02c",
+        "recommendation": "Konsumsi listrik sangat minimal (kondisi malam / rumah kosong). Efisiensi optimal."
+    },
+    {
+        "timestamp": "2010-11-25 02:00:00",
+        "actual_kw": 0.2664,
+        "predicted_kw": 0.2743,
+        "delta_kw": -0.0233,
+        "fuzzy_score": 9.83,
+        "demand_status": "Very Low",
+        "color": "#2ca02c",
+        "recommendation": "Konsumsi listrik sangat minimal (kondisi malam / rumah kosong). Efisiensi optimal."
+    },
+    {
+        "timestamp": "2010-11-25 03:00:00",
+        "actual_kw": 0.3357,
+        "predicted_kw": 0.3365,
+        "delta_kw": 0.0694,
+        "fuzzy_score": 15.27,
+        "demand_status": "Very Low",
+        "color": "#2ca02c",
+        "recommendation": "Konsumsi listrik sangat minimal (kondisi malam / rumah kosong). Efisiensi optimal."
+    },
+    {
+        "timestamp": "2010-11-25 04:00:00",
+        "actual_kw": 0.3771,
+        "predicted_kw": 0.3812,
+        "delta_kw": 0.0413,
+        "fuzzy_score": 20.95,
+        "demand_status": "Low",
+        "color": "#1f77b4",
+        "recommendation": "Beban dasar aktif (kulkas, standby appliances). Kapasitas daya aman."
+    },
+    {
+        "timestamp": "2010-11-25 05:00:00",
+        "actual_kw": 0.8805,
+        "predicted_kw": 0.8558,
+        "delta_kw": 0.5035,
+        "fuzzy_score": 63.38,
+        "demand_status": "High",
+        "color": "#d62728",
+        "recommendation": "Penggunaan alat listrik intensif (AC, mesin cuci, microwave bersamaan). Perlu pemantauan."
+    },
+    {
+        "timestamp": "2010-11-25 06:00:00",
+        "actual_kw": 0.9632,
+        "predicted_kw": 0.981,
+        "delta_kw": 0.0827,
+        "fuzzy_score": 53.66,
+        "demand_status": "Normal",
+        "color": "#ff7f0e",
+        "recommendation": "Aktivitas normal rumah tangga. Profil beban dalam batas wajar sistem tenaga."
+    },
+    {
+        "timestamp": "2010-11-25 07:00:00",
+        "actual_kw": 2.6271,
+        "predicted_kw": 2.6842,
+        "delta_kw": 1.6639,
+        "fuzzy_score": 91.78,
+        "demand_status": "Peak",
+        "color": "#7f1416",
+        "recommendation": "PERINGATAN: Beban mendekati kapasitas kontrak daya maksimum / batas trip MCB. Dianjurkan load shedding / mematikan alat berdaya besar."
+    },
+    {
+        "timestamp": "2010-11-25 08:00:00",
+        "actual_kw": 1.6294,
+        "predicted_kw": 1.6191,
+        "delta_kw": -0.9977,
+        "fuzzy_score": 35.25,
+        "demand_status": "Low",
+        "color": "#1f77b4",
+        "recommendation": "Beban dasar aktif (kulkas, standby appliances). Kapasitas daya aman."
+    },
+    {
+        "timestamp": "2010-11-25 09:00:00",
+        "actual_kw": 1.2577,
+        "predicted_kw": 1.2379,
+        "delta_kw": -0.3717,
+        "fuzzy_score": 32.76,
+        "demand_status": "Low",
+        "color": "#1f77b4",
+        "recommendation": "Beban dasar aktif (kulkas, standby appliances). Kapasitas daya aman."
+    },
+    {
+        "timestamp": "2010-11-25 10:00:00",
+        "actual_kw": 0.6455,
+        "predicted_kw": 0.6422,
+        "delta_kw": -0.6122,
+        "fuzzy_score": 9.92,
+        "demand_status": "Very Low",
+        "color": "#2ca02c",
+        "recommendation": "Konsumsi listrik sangat minimal (kondisi malam / rumah kosong). Efisiensi optimal."
+    },
+    {
+        "timestamp": "2010-11-25 11:00:00",
+        "actual_kw": 1.0281,
+        "predicted_kw": 1.0095,
+        "delta_kw": 0.3826,
+        "fuzzy_score": 74.0,
+        "demand_status": "High",
+        "color": "#d62728",
+        "recommendation": "Penggunaan alat listrik intensif (AC, mesin cuci, microwave bersamaan). Perlu pemantauan."
+    },
+    {
+        "timestamp": "2010-11-25 12:00:00",
+        "actual_kw": 0.4997,
+        "predicted_kw": 0.4976,
+        "delta_kw": -0.5283,
+        "fuzzy_score": 10.46,
+        "demand_status": "Very Low",
+        "color": "#2ca02c",
+        "recommendation": "Konsumsi listrik sangat minimal (kondisi malam / rumah kosong). Efisiensi optimal."
+    },
+    {
+        "timestamp": "2010-11-25 13:00:00",
+        "actual_kw": 0.3562,
+        "predicted_kw": 0.3625,
+        "delta_kw": -0.1435,
+        "fuzzy_score": 18.58,
+        "demand_status": "Very Low",
+        "color": "#2ca02c",
+        "recommendation": "Konsumsi listrik sangat minimal (kondisi malam / rumah kosong). Efisiensi optimal."
+    },
+    {
+        "timestamp": "2010-11-25 14:00:00",
+        "actual_kw": 0.3007,
+        "predicted_kw": 0.3075,
+        "delta_kw": -0.0556,
+        "fuzzy_score": 10.33,
+        "demand_status": "Very Low",
+        "color": "#2ca02c",
+        "recommendation": "Konsumsi listrik sangat minimal (kondisi malam / rumah kosong). Efisiensi optimal."
+    },
+    {
+        "timestamp": "2010-11-25 15:00:00",
+        "actual_kw": 0.333,
+        "predicted_kw": 0.3411,
+        "delta_kw": 0.0323,
+        "fuzzy_score": 14.89,
+        "demand_status": "Very Low",
+        "color": "#2ca02c",
+        "recommendation": "Konsumsi listrik sangat minimal (kondisi malam / rumah kosong). Efisiensi optimal."
+    },
+    {
+        "timestamp": "2010-11-25 16:00:00",
+        "actual_kw": 0.5418,
+        "predicted_kw": 0.5448,
+        "delta_kw": 0.2088,
+        "fuzzy_score": 44.34,
+        "demand_status": "Normal",
+        "color": "#ff7f0e",
+        "recommendation": "Aktivitas normal rumah tangga. Profil beban dalam batas wajar sistem tenaga."
+    },
+    {
+        "timestamp": "2010-11-25 17:00:00",
+        "actual_kw": 1.4801,
+        "predicted_kw": 1.481,
+        "delta_kw": 0.9383,
+        "fuzzy_score": 74.0,
+        "demand_status": "High",
+        "color": "#d62728",
+        "recommendation": "Penggunaan alat listrik intensif (AC, mesin cuci, microwave bersamaan). Perlu pemantauan."
+    },
+    {
+        "timestamp": "2010-11-25 18:00:00",
+        "actual_kw": 2.2116,
+        "predicted_kw": 2.1954,
+        "delta_kw": 0.7315,
+        "fuzzy_score": 92.34,
+        "demand_status": "Peak",
+        "color": "#7f1416",
+        "recommendation": "PERINGATAN: Beban mendekati kapasitas kontrak daya maksimum / batas trip MCB. Dianjurkan load shedding / mematikan alat berdaya besar."
+    },
+    {
+        "timestamp": "2010-11-25 19:00:00",
+        "actual_kw": 2.3305,
+        "predicted_kw": 2.3827,
+        "delta_kw": 0.1189,
+        "fuzzy_score": 74.82,
+        "demand_status": "High",
+        "color": "#d62728",
+        "recommendation": "Penggunaan alat listrik intensif (AC, mesin cuci, microwave bersamaan). Perlu pemantauan."
+    },
+    {
+        "timestamp": "2010-11-25 20:00:00",
+        "actual_kw": 1.6478,
+        "predicted_kw": 1.5995,
+        "delta_kw": -0.6826,
+        "fuzzy_score": 36.81,
+        "demand_status": "Low",
+        "color": "#1f77b4",
+        "recommendation": "Beban dasar aktif (kulkas, standby appliances). Kapasitas daya aman."
+    },
+    {
+        "timestamp": "2010-11-25 21:00:00",
+        "actual_kw": 1.3429,
+        "predicted_kw": 1.3497,
+        "delta_kw": -0.3049,
+        "fuzzy_score": 32.81,
+        "demand_status": "Low",
+        "color": "#1f77b4",
+        "recommendation": "Beban dasar aktif (kulkas, standby appliances). Kapasitas daya aman."
+    },
+    {
+        "timestamp": "2010-11-25 22:00:00",
+        "actual_kw": 1.2476,
+        "predicted_kw": 1.2707,
+        "delta_kw": -0.0954,
+        "fuzzy_score": 53.47,
+        "demand_status": "Normal",
+        "color": "#ff7f0e",
+        "recommendation": "Aktivitas normal rumah tangga. Profil beban dalam batas wajar sistem tenaga."
+    },
+    {
+        "timestamp": "2010-11-25 23:00:00",
+        "actual_kw": 0.957,
+        "predicted_kw": 0.9586,
+        "delta_kw": -0.2906,
+        "fuzzy_score": 32.84,
+        "demand_status": "Low",
+        "color": "#1f77b4",
+        "recommendation": "Beban dasar aktif (kulkas, standby appliances). Kapasitas daya aman."
+    },
+    {
+        "timestamp": "2010-11-26 00:00:00",
+        "actual_kw": 0.2943,
+        "predicted_kw": 0.2959,
+        "delta_kw": -0.6627,
+        "fuzzy_score": 10.16,
+        "demand_status": "Very Low",
+        "color": "#2ca02c",
+        "recommendation": "Konsumsi listrik sangat minimal (kondisi malam / rumah kosong). Efisiensi optimal."
+    },
+    {
+        "timestamp": "2010-11-26 01:00:00",
+        "actual_kw": 0.281,
+        "predicted_kw": 0.285,
+        "delta_kw": -0.0133,
+        "fuzzy_score": 9.99,
+        "demand_status": "Very Low",
+        "color": "#2ca02c",
+        "recommendation": "Konsumsi listrik sangat minimal (kondisi malam / rumah kosong). Efisiensi optimal."
+    },
+    {
+        "timestamp": "2010-11-26 02:00:00",
+        "actual_kw": 0.2734,
+        "predicted_kw": 0.2669,
+        "delta_kw": -0.0076,
+        "fuzzy_score": 9.89,
+        "demand_status": "Very Low",
+        "color": "#2ca02c",
+        "recommendation": "Konsumsi listrik sangat minimal (kondisi malam / rumah kosong). Efisiensi optimal."
+    },
+    {
+        "timestamp": "2010-11-26 03:00:00",
+        "actual_kw": 0.2984,
+        "predicted_kw": 0.2939,
+        "delta_kw": 0.0249,
+        "fuzzy_score": 10.21,
+        "demand_status": "Very Low",
+        "color": "#2ca02c",
+        "recommendation": "Konsumsi listrik sangat minimal (kondisi malam / rumah kosong). Efisiensi optimal."
+    },
+    {
+        "timestamp": "2010-11-26 04:00:00",
+        "actual_kw": 0.314,
+        "predicted_kw": 0.3152,
+        "delta_kw": 0.0157,
+        "fuzzy_score": 12.25,
+        "demand_status": "Very Low",
+        "color": "#2ca02c",
+        "recommendation": "Konsumsi listrik sangat minimal (kondisi malam / rumah kosong). Efisiensi optimal."
+    },
+    {
+        "timestamp": "2010-11-26 05:00:00",
+        "actual_kw": 0.2826,
+        "predicted_kw": 0.287,
+        "delta_kw": -0.0315,
+        "fuzzy_score": 10.01,
+        "demand_status": "Very Low",
+        "color": "#2ca02c",
+        "recommendation": "Konsumsi listrik sangat minimal (kondisi malam / rumah kosong). Efisiensi optimal."
+    },
+    {
+        "timestamp": "2010-11-26 06:00:00",
+        "actual_kw": 1.0088,
+        "predicted_kw": 1.007,
+        "delta_kw": 0.7262,
+        "fuzzy_score": 74.0,
+        "demand_status": "High",
+        "color": "#d62728",
+        "recommendation": "Penggunaan alat listrik intensif (AC, mesin cuci, microwave bersamaan). Perlu pemantauan."
+    },
+    {
+        "timestamp": "2010-11-26 07:00:00",
+        "actual_kw": 2.8839,
+        "predicted_kw": 2.8312,
+        "delta_kw": 1.8752,
+        "fuzzy_score": 91.04,
+        "demand_status": "Peak",
+        "color": "#7f1416",
+        "recommendation": "PERINGATAN: Beban mendekati kapasitas kontrak daya maksimum / batas trip MCB. Dianjurkan load shedding / mematikan alat berdaya besar."
+    },
+    {
+        "timestamp": "2010-11-26 08:00:00",
+        "actual_kw": 1.9993,
+        "predicted_kw": 1.9461,
+        "delta_kw": -0.8846,
+        "fuzzy_score": 53.51,
+        "demand_status": "Normal",
+        "color": "#ff7f0e",
+        "recommendation": "Aktivitas normal rumah tangga. Profil beban dalam batas wajar sistem tenaga."
+    },
+    {
+        "timestamp": "2010-11-26 09:00:00",
+        "actual_kw": 1.85,
+        "predicted_kw": 1.8517,
+        "delta_kw": -0.1493,
+        "fuzzy_score": 69.46,
+        "demand_status": "High",
+        "color": "#d62728",
+        "recommendation": "Penggunaan alat listrik intensif (AC, mesin cuci, microwave bersamaan). Perlu pemantauan."
+    },
+    {
+        "timestamp": "2010-11-26 10:00:00",
+        "actual_kw": 1.3528,
+        "predicted_kw": 1.3812,
+        "delta_kw": -0.4972,
+        "fuzzy_score": 32.69,
+        "demand_status": "Low",
+        "color": "#1f77b4",
+        "recommendation": "Beban dasar aktif (kulkas, standby appliances). Kapasitas daya aman."
+    },
+    {
+        "timestamp": "2010-11-26 11:00:00",
+        "actual_kw": 1.3389,
+        "predicted_kw": 1.3274,
+        "delta_kw": -0.0139,
+        "fuzzy_score": 53.36,
+        "demand_status": "Normal",
+        "color": "#ff7f0e",
+        "recommendation": "Aktivitas normal rumah tangga. Profil beban dalam batas wajar sistem tenaga."
+    },
+    {
+        "timestamp": "2010-11-26 12:00:00",
+        "actual_kw": 1.4902,
+        "predicted_kw": 1.5211,
+        "delta_kw": 0.1513,
+        "fuzzy_score": 58.09,
+        "demand_status": "Normal",
+        "color": "#ff7f0e",
+        "recommendation": "Aktivitas normal rumah tangga. Profil beban dalam batas wajar sistem tenaga."
+    },
+    {
+        "timestamp": "2010-11-26 13:00:00",
+        "actual_kw": 1.6129,
+        "predicted_kw": 1.6344,
+        "delta_kw": 0.1227,
+        "fuzzy_score": 57.1,
+        "demand_status": "Normal",
+        "color": "#ff7f0e",
+        "recommendation": "Aktivitas normal rumah tangga. Profil beban dalam batas wajar sistem tenaga."
+    },
+    {
+        "timestamp": "2010-11-26 14:00:00",
+        "actual_kw": 1.4078,
+        "predicted_kw": 1.3996,
+        "delta_kw": -0.2052,
+        "fuzzy_score": 42.09,
+        "demand_status": "Normal",
+        "color": "#ff7f0e",
+        "recommendation": "Aktivitas normal rumah tangga. Profil beban dalam batas wajar sistem tenaga."
+    },
+    {
+        "timestamp": "2010-11-26 15:00:00",
+        "actual_kw": 0.8764,
+        "predicted_kw": 0.8984,
+        "delta_kw": -0.5313,
+        "fuzzy_score": 22.06,
+        "demand_status": "Low",
+        "color": "#1f77b4",
+        "recommendation": "Beban dasar aktif (kulkas, standby appliances). Kapasitas daya aman."
+    },
+    {
+        "timestamp": "2010-11-26 16:00:00",
+        "actual_kw": 1.0679,
+        "predicted_kw": 1.0678,
+        "delta_kw": 0.1915,
+        "fuzzy_score": 62.68,
+        "demand_status": "High",
+        "color": "#d62728",
+        "recommendation": "Penggunaan alat listrik intensif (AC, mesin cuci, microwave bersamaan). Perlu pemantauan."
+    },
+    {
+        "timestamp": "2010-11-26 17:00:00",
+        "actual_kw": 1.7259,
+        "predicted_kw": 1.7392,
+        "delta_kw": 0.658,
+        "fuzzy_score": 81.9,
+        "demand_status": "Peak",
+        "color": "#7f1416",
+        "recommendation": "PERINGATAN: Beban mendekati kapasitas kontrak daya maksimum / batas trip MCB. Dianjurkan load shedding / mematikan alat berdaya besar."
+    },
+    {
+        "timestamp": "2010-11-26 18:00:00",
+        "actual_kw": 1.5735,
+        "predicted_kw": 1.5484,
+        "delta_kw": -0.1524,
+        "fuzzy_score": 48.68,
+        "demand_status": "Normal",
+        "color": "#ff7f0e",
+        "recommendation": "Aktivitas normal rumah tangga. Profil beban dalam batas wajar sistem tenaga."
+    },
+    {
+        "timestamp": "2010-11-26 19:00:00",
+        "actual_kw": 1.6593,
+        "predicted_kw": 1.6776,
+        "delta_kw": 0.0859,
+        "fuzzy_score": 58.81,
+        "demand_status": "Normal",
+        "color": "#ff7f0e",
+        "recommendation": "Aktivitas normal rumah tangga. Profil beban dalam batas wajar sistem tenaga."
+    },
+    {
+        "timestamp": "2010-11-26 20:00:00",
+        "actual_kw": 1.1637,
+        "predicted_kw": 1.1377,
+        "delta_kw": -0.4956,
+        "fuzzy_score": 32.69,
+        "demand_status": "Low",
+        "color": "#1f77b4",
+        "recommendation": "Beban dasar aktif (kulkas, standby appliances). Kapasitas daya aman."
+    },
+    {
+        "timestamp": "2010-11-26 21:00:00",
+        "actual_kw": 0.9347,
+        "predicted_kw": 0.9592,
+        "delta_kw": -0.229,
+        "fuzzy_score": 35.25,
+        "demand_status": "Low",
+        "color": "#1f77b4",
+        "recommendation": "Beban dasar aktif (kulkas, standby appliances). Kapasitas daya aman."
+    }
+]

@@ -1,0 +1,204 @@
+--- PAGE 1 ---
+TE2514031 | Tugas Besar Kecerdasan Buatan | Gasal 2026/2027
+1
+PANDUAN DELIVERABLES TUGAS BESAR
+Kecerdasan Buatan | Minggu 12-16 | UAS: Demo & Presentasi Proyek
+Mata Kuliah
+Kecerdasan Buatan - TE2514031
+Semester
+Gasal 2026/2027
+Cakupan
+Kelas A, B dan X sesuai kelompok/topik yang ditetapkan
+Jenis akhir
+UAS berupa demo langsung dan presentasi proyek
+Dataset
+UCI Machine Learning Repository, sesuai tugas setiap kelompok
+Tujuan utama: setiap kelompok menghasilkan sistem AI hibrida yang terukur dan dapat dipakai: GA (seleksi
+fitur) + PSO (optimasi hyperparameter) + Neural Network (prediksi) + Fuzzy Logic (keputusan) +
+Streamlit (dashboard online).
+Catatan teknis: pelatihan GA/PSO/NN boleh dilakukan offline; dashboard memuat artefak model untuk inference. Dashboard
+tidak wajib melatih model berat ulang pada setiap klik.
+1. Peta Milestone Minggu 12-16
+Peka
+n
+Prioritas
+Deliverable yang harus bisa diverifikasi
+12
+Data, baseline, desain
+sistem
+Proposal + EDA + split aman + baseline NN + repo & kerangka Streamlit
+13
+Implementasi GA
+Kode GA + fitness + convergence + fitur terpilih + Baseline vs GA+NN
+14
+Implementasi PSO & NN
+Kode PSO + training NN + model tersimpan + perbandingan 4 eksperimen
+15
+Fuzzy & deployment
+FIS + inference end-to-end + dashboard online + draft laporan akhir
+16
+UAS - demo & defense
+Presentasi, live demo, source/repo, laporan final, video & bukti kontribusi
+Empat konfigurasi yang wajib dibandingkan: Baseline NN, GA+NN, PSO+NN, dan GA+PSO+NN. Tambahkan Fuzzy Logic
+sebagai lapisan keputusan pada sistem akhir; fuzzy bukan jaminan kenaikan akurasi prediksi.
+Minggu 12 - Data, preprocessing, baseline & perencanaan
+Fokus kerja: Validasi target, tipe problem dan kualitas dataset; lakukan EDA, missing-values analysis,
+penanganan imbalance jika relevan, split train/validation/test, dan bangun baseline NN. Buat repository serta
+kerangka Streamlit.
+Deliverables yang diserahkan:
+1. W12_Proposal_EDA.pdf (2-4 halaman): tujuan, arsitektur, data dictionary, metrik, risiko dan pembagian peran.
+2. Notebook/script EDA, preprocessing, baseline NN awal; README, requirements.txt.
+3. Tautan repository dan bukti aplikasi Streamlit awal (URL skeleton jika sudah dapat di-deploy).
+
+--- PAGE 2 ---
+TE2514031 | Tugas Besar Kecerdasan Buatan | Gasal 2026/2027
+2
+Kriteria pemeriksaan: Dataset terbaca, target & metrik tepat, split tidak bocor, baseline dapat dijalankan dan tanggung
+jawab anggota jelas.
+Minggu 13 - Genetic Algorithm dan feature/variable selection
+Fokus kerja: Implementasikan encoding chromosome, objective/fitness, selection, crossover, mutation,
+elitism dan stopping criterion. Lakukan GA pada fitur/sensor/lag, lalu latih NN pada subset hasil GA dengan
+protokol split tetap.
+Deliverables yang diserahkan:
+1. W13_GA_Progress.pdf: rumus fitness, hyperparameter GA, log konvergensi, fitur terpilih.
+2. Kode GA, minimal bukti beberapa seed (sesuai sumber daya), convergence curve dan tabel fitur sebelum/sesudah.
+3. Tabel Baseline NN vs GA+NN (metrik validasi, jumlah fitur, waktu komputasi); halaman GA dashboard.
+Kriteria pemeriksaan: GA benar-benar melakukan pencarian; fitness dapat dipertanggungjawabkan; fitur tidak dipilih
+berdasarkan test set; hasil dapat diulang.
+Minggu 14 - PSO, Neural Network dan eksperimen pembanding
+Fokus kerja: Definisikan particle, search bounds, pbest, gbest, velocity-position update dan stopping rule.
+Tuning NN via PSO; bandingkan 4 konfigurasi dengan split, metrik dan anggaran evaluasi terdokumentasi.
+Deliverables yang diserahkan:
+1. W14_PSO_NN_Progress.pdf: search space, parameter PSO, kurva gbest, hasil utama.
+2. Kode PSO dan training, logs, training/validation curves, checkpoint model & preprocessing pipeline.
+3. Tabel empat model: fitur, hyperparameter, metrik dan waktu; dashboard beta Prediction dan Model Comparison.
+Kriteria pemeriksaan: PSO melakukan optimasi riil, model dapat dimuat ulang, perbandingan tidak bias, klaim perbaikan
+dibuktikan oleh data.
+Minggu 15 - Fuzzy Inference, integrasi dan public deployment
+Fokus kerja: Bangun FIS memakai input dan aturan yang relevan, lengkap dengan membership functions dan
+inference/defuzzification. Hubungkan model prediksi ke keputusan, finalkan halaman Streamlit, lakukan
+quality assurance dan uji akses publik.
+Deliverables yang diserahkan:
+1. W15_Full_System_Draft.pdf: desain FIS, membership, rule table, contoh inferensi dan validasi keputusan.
+2. Kode pipeline inference (preprocessing + NN + fuzzy), URL Streamlit aktif, requirements, model artifacts, README.
+3. Draft laporan lengkap, tabel ablation, screenshot/video uji fungsi serta skenario demo UAS.
+Kriteria pemeriksaan: Input baru menghasilkan prediksi dan keputusan; rules konsisten; dashboard dapat dibuka tanpa izin;
+repo bebas secret/token.
+Minggu 16 - UAS - demo presentasi & pembelaan proyek
+Fokus kerja: Presentasikan problem, data, algoritma GA/PSO/NN/FIS, hasil perbandingan dan keterbatasan.
+Jalankan demo langsung. Dosen dapat memilih anggota secara acak untuk menjelaskan kode dan keputusan
+desain.
+Deliverables yang diserahkan:
+1. FINAL_Laporan_Tubes_KB_Kelas_Kelompok.pdf serta slide dan video demo (3-5 menit dianjurkan).
+2. URL repository final (release/tag disarankan), source, requirements, README, model, config, seed, logs.
+3. URL dashboard online dan form kontribusi anggota dengan bukti peran; siapkan cadangan demo lokal bila koneksi
+bermasalah.
+
+--- PAGE 3 ---
+TE2514031 | Tugas Besar Kecerdasan Buatan | Gasal 2026/2027
+3
+Kriteria pemeriksaan: Aplikasi berfungsi secara live; semua artefak dapat dibuka; hasil dapat diverifikasi; tiap anggota
+menguasai sistem.
+4. Spesifikasi dashboard Streamlit
+Menu / halaman
+Fitur minimum
+Overview
+Topik, sumber dataset UCI, tujuan, anggota dan diagram sistem.
+Dataset Explorer
+Statistik, grafik, missing values, target dan distribusi fitur.
+GA Optimization
+Fitness, kromosom, fitur terpilih, convergence per seed.
+PSO Optimization
+Search space, kurva gbest, hyperparameter terbaik.
+Neural Network
+Arsitektur, training & validation curves, metrik pengujian.
+Fuzzy Inference
+Membership plots, rule base, output dan penjelasan keputusan.
+Prediction / Simulation
+Input manual / CSV -> prediksi NN -> keputusan fuzzy.
+Model Comparison
+Baseline NN vs GA+NN vs PSO+NN vs GA+PSO+NN.
+Delapan area ini boleh berupa tabs atau navigation pages; bukan wajib delapan file Python. Proses optimasi berat boleh
+dieksekusi offline, tetapi inference di dashboard harus benar-benar berfungsi.
+5. Standar evaluasi dan integritas eksperimen
+Aspek
+Kewajiban
+Klasifikasi
+Accuracy, precision, recall, F1-score, confusion matrix; bahas imbalance bila relevan.
+Regresi/time series
+MAE, RMSE, R², actual vs predicted; analisis kesalahan dan urutan waktu.
+GA/PSO stokastik
+Catat seed, budget evaluasi, konfigurasi, log; jalankan berulang jika feasible dan sajikan statistik.
+Pencegahan leakage
+Scaler, imputer, seleksi fitur & tuning disesuaikan dengan training/validation saja; test untuk evaluasi
+akhir.
+Keputusan Fuzzy
+Uji rule consistency, skenario ekstrem dan interpretasi; tidak disetarakan dengan akurasi NN.
+Reproducibility
+Kunci versi library, simpan preprocessing dan model, dokumentasikan jalur menjalankan aplikasi.
+6. Mekanisme pengumpulan
+Unggah 1 laporan progres PDF dan 1 tautan repository setiap minggu melalui Moodle; sertakan URL
+deployment bila tersedia. Gunakan folder/tag W12, W13, W14, W15, FINAL. Jangan unggah dataset UCI
+berukuran besar berulang; dokumentasikan cara mendapatkannya. Tenggat aktual mengikuti pengaturan
+Moodle/pengampu.
+Jika menggunakan Google Drive sebagai alternatif, atur akses Anyone with the link - Viewer dan periksa dengan Incognito.
+Jangan mengunggah password, token API atau file rahasia ke GitHub publik.
+Contoh nama folder: TUBES_KB_2026_KelasB_Kelompok01 (sesuaikan kelas dan nomor).
+
+--- PAGE 4 ---
+TE2514031 | Tugas Besar Kecerdasan Buatan | Gasal 2026/2027
+4
+7. Rubrik penilaian proyek (100 poin)
+Komponen
+Poin
+Data understanding & preprocessing
+10
+Implementasi & analisis GA
+12
+Implementasi & analisis PSO
+12
+Neural Network (MLP/CNN/RNN/LSTM)
+20
+Fuzzy Inference System
+12
+Integrasi hybrid & comparative experiment
+12
+Streamlit dashboard & deployment
+15
+Reproducibility, laporan & kualitas kode
+7
+TOTAL
+100
+Rubrik ini mengikuti pembobotan tugas besar sebelumnya. Bobot UAS terhadap nilai akhir mata kuliah tetap mengikuti
+RPS/ketentuan kelas. Pemeriksaan mingguan mendukung umpan balik dan tidak otomatis menambah komponen bobot
+baru.
+8. Format demo saat UAS (usulan)
+Bagian
+Durasi contoh
+Isi
+Problem & data
+3 menit
+Masalah, data UCI, target, split dan metrik
+Metode & eksperimen
+3 menit
+Desain GA, PSO, NN, Fuzzy dan hasil ablation
+Live dashboard
+5 menit
+Upload/input, prediksi, fuzzy decision, visualisasi
+Tanya jawab individu
+4 menit
+Penjelasan kode, debugging, refleksi keterbatasan
+Total usulan
+15 menit
+Dapat diubah pengampu sesuai slot UAS
+Catatan logistik: Kelas B (16 kelompok) memerlukan sekitar 240 menit pada durasi 15 menit/kelompok, di luar jeda.
+Jadwalkan lebih dari satu sesi bila alokasi UAS tidak mencukupi; Kelas A (7 kelompok) sekitar 105 menit dan Kelas X (4
+kelompok) sekitar 60 menit.
+9. Checklist final
+  M12: EDA, split, baseline, repo dan kerangka Streamlit sudah ada.
+  M13: GA beserta fitur dan convergence telah divalidasi.
+  M14: PSO, checkpoint NN dan empat pembanding telah selesai.
+  M15: Fuzzy decision layer dan Streamlit online sudah terintegrasi.
+  M16: presentasi, demo live, laporan, repo, video dan bukti kontribusi siap.
+Penegasan: project dinilai dari keterkaitan yang dapat dibuktikan antara Problem -> Data -> Optimization -> Learning ->
+Decision -> Deployment, bukan dari kompleksitas model atau estetika dashboard semata.

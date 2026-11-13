@@ -1,0 +1,39 @@
+{
+    "total_raw_rows": 2075259,
+    "total_hourly_rows": 34565,
+    "date_start": "2006-12-17 17:00:00",
+    "date_end": "2010-11-26 21:00:00",
+    "train_rows": 24195,
+    "val_rows": 5185,
+    "test_rows": 5185,
+    "target_stats": {
+        "mean": 1.0932782414742994,
+        "std": 0.8963329282376741,
+        "min": 0.12399999999999996,
+        "p25": 0.34233333333333327,
+        "median": 0.8028666666666667,
+        "p75": 1.5858,
+        "p90": 2.338,
+        "max": 6.560533333333333
+    },
+    "features": [
+        "Global_active_power",
+        "Global_reactive_power",
+        "Voltage",
+        "Global_intensity",
+        "Sub_metering_1",
+        "Sub_metering_2",
+        "Sub_metering_3",
+        "Sub_metering_remainder",
+        "gap_lag_1",
+        "gap_lag_2",
+        "gap_lag_3",
+        "gap_lag_24",
+        "rolling_mean_24h",
+        "hour_sin",
+        "hour_cos",
+        "dayofweek_sin",
+        "dayofweek_cos",
+        "is_weekend"
+    ]
+}
