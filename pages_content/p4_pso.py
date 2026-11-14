@@ -1,17 +1,18 @@
 """
-Halaman 4: Particle Swarm Optimization (PSO) Hyperparameter Tuning
+Halaman 4: Particle Swarm Optimization (PSO) Hyperparameter Tuning Visualizer
 Kelompok 6 - Household Electricity Load Forecasting
 """
 
 import json
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
+import numpy as np
+import plotly.graph_objects as go
 from pathlib import Path
 
 
 def render():
-    st.header("⚡ Particle Swarm Optimization (PSO) - Tuning Hyperparameter & Window")
+    st.header("⚡ Particle Swarm Optimization (PSO) - Tuning Hyperparameter")
     st.markdown("""
     Particle Swarm Optimization digunakan untuk mencari konfigurasi *sequence length* (jendela historis masa lalu) 
     dan hyperparameter arsitektur LSTM terbaik untuk meminimalkan error peramalan beban listrik.
@@ -25,17 +26,12 @@ def render():
     else:
         pso_data = {
             "best_hyperparameters": {
-                "sequence_length": 32,
-                "lstm_units": 32,
-                "dropout_rate": 0.1,
-                "learning_rate": 0.00198,
-                "batch_size": 32
+                "sequence_length": 32, "lstm_units": 32, "dropout_rate": 0.1, "learning_rate": 0.00198, "batch_size": 32
             },
             "gbest_validation_rmse": 0.5528,
             "convergence_gbest_history": [0.5594, 0.5528, 0.5528, 0.5528, 0.5528, 0.5528],
             "search_time_seconds": 615.4,
-            "swarm_particles": 8,
-            "iterations": 6
+            "swarm_particles": 8, "iterations": 6
         }
 
     best_p = pso_data['best_hyperparameters']
@@ -49,43 +45,90 @@ def render():
 
     st.markdown("---")
 
-    col_l, col_r = st.columns([1, 1])
+    tab1, tab2, tab3 = st.tabs([
+        "📉 Kurva Konvergensi gbest PSO (Plotly)",
+        "🕸️ Radar Chart Perbandingan Baseline vs PSO",
+        "⚙️ Parameter Ruang Pencarian (Search Space)"
+    ])
 
-    with col_l:
-        st.subheader("🌌 Search Space & Konfigurasi Swarm")
-        st.markdown(f"""
-        - **Jumlah Partikel ($N_p$)**: {pso_data.get('swarm_particles', 8)} partikel.
-        - **Jumlah Iterasi**: {pso_data.get('iterations', 6)} iterasi pencarian.
-        - **Bobot Inersia ($w$)**: 0.70.
-        - **Akselerasi Kognitif ($c_1$)**: 1.50 (pengalaman pribadi terbaik $pbest$).
-        - **Akselerasi Sosial ($c_2$)**: 1.50 (pengalaman kawanan terbaik $gbest$).
-        """)
+    with tab1:
+        st.subheader("Kurva Penurunan Error Validasi Global Best (gbest RMSE)")
+        st.markdown("Penurunan nilai error validasi terbaik kawanan partikel selama 6 iterasi:")
 
-        st.markdown("**Ruang Pencarian Hyperparameter:**")
+        history_gbest = pso_data.get('convergence_gbest_history', [0.5594, 0.5528, 0.5528, 0.5528, 0.5528, 0.5528])
+        iters = list(range(1, len(history_gbest) + 1))
+
+        fig_pso = go.Figure()
+        fig_pso.add_trace(go.Scatter(
+            x=iters,
+            y=history_gbest,
+            mode='lines+markers',
+            name='gbest RMSE (kW)',
+            line=dict(color='#ff1744', width=3),
+            marker=dict(size=10, symbol='diamond', color='#ff1744'),
+            hovertemplate="Iterasi: %{x}<br>gbest RMSE: <b>%{y:.4f} kW</b><extra></extra>"
+        ))
+
+        fig_pso.update_layout(
+            template='plotly_dark',
+            plot_bgcolor='rgba(15, 23, 42, 0.6)',
+            paper_bgcolor='rgba(15, 23, 42, 0.6)',
+            title="Konvergensi Global Best Swarm terhadap Iterasi",
+            xaxis=dict(title="Iterasi Swarm", tickmode='linear', tick0=1, dtick=1),
+            yaxis_title="Validation RMSE (kW)",
+            height=380,
+            margin=dict(l=40, r=40, t=50, b=40)
+        )
+        st.plotly_chart(fig_pso, use_container_width=True)
+
+        st.info("💡 **Analisis Konvergensi PSO**: Swarm mencapai solusi global terbaik pada **Iterasi ke-2** (RMSE: 0.5528 kW) dengan menemukan bahwa jendela waktu 32 jam dan learning rate ~0.0020 secara signifikan meningkatkan kestabilan pembelajaran dibanding default baseline.")
+
+    with tab2:
+        st.subheader("Radar Chart: Profil Hyperparameter Baseline vs PSO Optimal")
+        st.markdown("Perbandingan skala ternormalisasi antara parameter default Model A dan konfigurasi optimal hasil tuning PSO:")
+
+        categories = ['Sequence Length (Jam)', 'LSTM Units', 'Learning Rate (x1000)', 'Batch Size', 'Regularisasi Dropout']
+        
+        # Normalized values for clean radar view
+        baseline_norm = [24/36, 32/64, 1.0/5.0, 32/64, 0.10/0.35]
+        pso_norm      = [best_p['sequence_length']/36, best_p['lstm_units']/64, (best_p['learning_rate']*1000)/5.0, best_p['batch_size']/64, best_p['dropout_rate']/0.35]
+
+        fig_radar = go.Figure()
+        fig_radar.add_trace(go.Scatterpolar(
+            r=baseline_norm + [baseline_norm[0]],
+            theta=categories + [categories[0]],
+            fill='toself',
+            name='Model A (Baseline Default)',
+            line=dict(color='#38bdf8', width=2)
+        ))
+        fig_radar.add_trace(go.Scatterpolar(
+            r=pso_norm + [pso_norm[0]],
+            theta=categories + [categories[0]],
+            fill='toself',
+            name='Model C/D (PSO Optimal)',
+            line=dict(color='#f59e0b', width=2.5)
+        ))
+
+        fig_radar.update_layout(
+            polar=dict(
+                radialaxis=dict(visible=True, range=[0, 1])
+            ),
+            template='plotly_dark',
+            paper_bgcolor='rgba(15, 23, 42, 0.6)',
+            showlegend=True,
+            height=430,
+            margin=dict(l=40, r=40, t=30, b=30)
+        )
+        st.plotly_chart(fig_radar, use_container_width=True)
+
+    with tab3:
+        st.subheader("⚙️ Detail Ruang Pencarian & Nilai Pemenang")
+        
         df_bounds = pd.DataFrame([
-            {"Parameter": "Sequence Length", "Rentang Batas": "12 s.d. 36 jam", "Nilai Baseline": "24 jam", "Hasil Optimal PSO": f"{best_p['sequence_length']} jam"},
-            {"Parameter": "LSTM Units", "Rentang Batas": "16 s.d. 64 unit", "Nilai Baseline": "32 unit", "Hasil Optimal PSO": f"{best_p['lstm_units']} unit"},
-            {"Parameter": "Dropout Rate", "Rentang Batas": "0.05 s.d. 0.35", "Nilai Baseline": "0.10", "Hasil Optimal PSO": f"{best_p['dropout_rate']}"},
-            {"Parameter": "Learning Rate", "Rentang Batas": "0.0003 s.d. 0.005", "Nilai Baseline": "0.0010", "Hasil Optimal PSO": f"{best_p['learning_rate']:.5f}"},
-            {"Parameter": "Batch Size", "Rentang Batas": "32 atau 64", "Nilai Baseline": "32", "Hasil Optimal PSO": f"{best_p['batch_size']}"}
+            {"Parameter": "Sequence Length", "Rentang Pencarian": "12 s.d. 36 jam", "Default Baseline": "24 jam", "Hasil Optimal PSO": f"{best_p['sequence_length']} jam", "Dampak Fisis": "Menangkap 1 hari penuh + 8 jam transisi beban malam"},
+            {"Parameter": "LSTM Units", "Rentang Pencarian": "16 s.d. 64 unit", "Default Baseline": "32 unit", "Hasil Optimal PSO": f"{best_p['lstm_units']} unit", "Dampak Fisis": "Kapasitas memori representasi non-linier seimbang"},
+            {"Parameter": "Dropout Rate", "Rentang Pencarian": "0.05 s.d. 0.35", "Default Baseline": "0.10", "Hasil Optimal PSO": f"{best_p['dropout_rate']}", "Dampak Fisis": "Mencegah ko-adaptasi bobot pada jam-jam sepi"},
+            {"Parameter": "Learning Rate", "Rentang Pencarian": "0.0003 s.d. 0.005", "Default Baseline": "0.0010", "Hasil Optimal PSO": f"{best_p['learning_rate']:.5f}", "Dampak Fisis": "Konvergensi gradien 2x lebih adaptif"},
+            {"Parameter": "Batch Size", "Rentang Pencarian": "32 atau 64", "Default Baseline": "32", "Hasil Optimal PSO": f"{best_p['batch_size']}", "Dampak Fisis": "Stabilitas update bobot pada batch time-series"}
         ])
         st.dataframe(df_bounds, use_container_width=True)
-
-    with col_r:
-        st.subheader("📉 Kurva Konvergensi gbest PSO")
-        fig, ax = plt.subplots(figsize=(6, 4))
-        history_gbest = pso_data.get('convergence_gbest_history', [0.5594, 0.5528, 0.5528, 0.5528, 0.5528, 0.5528])
-        ax.plot(range(1, len(history_gbest) + 1), history_gbest, marker='o', lw=2.2, color='#d62728', label='gbest Val RMSE')
-        ax.set_title('Penurunan Error Validasi (gbest RMSE)', fontweight='bold', fontsize=10)
-        ax.set_xlabel('Iterasi PSO')
-        ax.set_ylabel('Validation RMSE (kW)')
-        ax.grid(True, linestyle=':', alpha=0.6)
-        ax.legend()
-        plt.tight_layout()
-        st.pyplot(fig)
-        plt.close()
-
-    st.success("""
-    🔬 **Wawasan Domain Teknik Tenaga Listrik**:
-    Window historis **32 jam** yang ditemukan oleh PSO terbukti lebih superior dibanding 24 jam. Window 32 jam mencakup 1 siklus harian lengkap (24 jam) ditambah 8 jam transisi beban malam-ke-pagi, memberikan konteks memori yang kaya bagi LSTM untuk mengantisipasi *morning peak load*.
-    """)

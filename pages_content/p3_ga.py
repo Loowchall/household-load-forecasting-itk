@@ -1,17 +1,18 @@
 """
-Halaman 3: Genetic Algorithm (GA) Optimization
+Halaman 3: Genetic Algorithm (GA) Optimization Visualizer
 Kelompok 6 - Household Electricity Load Forecasting
 """
 
 import json
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
+import numpy as np
+import plotly.graph_objects as go
 from pathlib import Path
 
 
 def render():
-    st.header("🧬 Genetic Algorithm (GA) - Seleksi Variabel Listrik & Lag")
+    st.header("🧬 Genetic Algorithm (GA) - Seleksi Fitur & Lag Beban")
     st.markdown("""
     Genetic Algorithm digunakan untuk melakukan pencarian metaheuristik otomatis dalam menyeleksi subset variabel listrik dan lag waktu terbaik, 
     mengeliminasi fitur redundan/berisik, serta meningkatkan efisiensi komputasi model LSTM.
@@ -34,66 +35,137 @@ def render():
             "search_time_seconds": 844.5
         }
 
-    # Ringkasan Metrik GA
-    c1, c2, c3, c4 = st.columns(4)
-    c1.metric("Kandidat Fitur Awal", len(ga_data['all_candidate_features']))
-    c2.metric("Fitur Terpilih (GA)", len(ga_data['selected_features']))
-    c3.metric("Fitur Dipangkas", f"{((len(ga_data['all_candidate_features']) - len(ga_data['selected_features'])) / len(ga_data['all_candidate_features'])) * 100:.1f}%")
-    c4.metric("Best Fitness", f"{ga_data['best_fitness']:.4f}")
+    # Metric Header Cards
+    m1, m2, m3, m4 = st.columns(4)
+    m1.metric("Kandidat Fitur Awal", len(ga_data['all_candidate_features']))
+    m2.metric("Fitur Terpilih (GA)", len(ga_data['selected_features']), delta="-7 Fitur Redundan")
+    m3.metric("Rasio Pemangkasan", f"{((len(ga_data['all_candidate_features']) - len(ga_data['selected_features'])) / len(ga_data['all_candidate_features'])) * 100:.1f}%")
+    m4.metric("Best Fitness", f"{ga_data['best_fitness']:.4f}")
 
     st.markdown("---")
 
-    col_left, col_right = st.columns([1, 1])
+    tab1, tab2, tab3 = st.tabs([
+        "📈 Kurva Konvergensi Generasi (Plotly)",
+        "📊 Visualisasi Fitur Terpilih vs Dieliminasi",
+        "🧬 Representasi Kromosom & Parameter GA"
+    ])
 
-    with col_left:
-        st.subheader("⚙️ Parameter & Formulasi Matematis GA")
+    with tab1:
+        st.subheader("Kurva Konvergensi Evolusi Fitness (10 Generasi)")
+        st.markdown("Pelacakan peningkatan *Best Fitness* dan *Mean Population Fitness* selama proses evolusi populasi:")
+
+        gens = list(range(1, len(ga_data['convergence_best_fitness']) + 1))
+        best_fit = ga_data['convergence_best_fitness']
+        mean_fit = ga_data['convergence_mean_fitness']
+
+        fig_ga = go.Figure()
+
+        # Shaded area antara mean dan best
+        fig_ga.add_trace(go.Scatter(
+            x=gens + gens[::-1],
+            y=best_fit + mean_fit[::-1],
+            fill='toself',
+            fillcolor='rgba(0, 230, 118, 0.1)',
+            line=dict(color='rgba(255,255,255,0)'),
+            name='Rentang Populasi'
+        ))
+
+        # Best Fitness Line
+        fig_ga.add_trace(go.Scatter(
+            x=gens,
+            y=best_fit,
+            mode='lines+markers',
+            name='Best Fitness',
+            line=dict(color='#00e676', width=3),
+            marker=dict(size=8, symbol='circle', color='#00e676'),
+            hovertemplate="Generasi: %{x}<br>Best Fitness: <b>%{y:.4f}</b><extra></extra>"
+        ))
+
+        # Mean Fitness Line
+        fig_ga.add_trace(go.Scatter(
+            x=gens,
+            y=mean_fit,
+            mode='lines+markers',
+            name='Mean Population Fitness',
+            line=dict(color='#38bdf8', width=2, dash='dot'),
+            marker=dict(size=6, symbol='square', color='#38bdf8'),
+            hovertemplate="Generasi: %{x}<br>Mean Fitness: <b>%{y:.4f}</b><extra></extra>"
+        ))
+
+        fig_ga.update_layout(
+            template='plotly_dark',
+            plot_bgcolor='rgba(15, 23, 42, 0.6)',
+            paper_bgcolor='rgba(15, 23, 42, 0.6)',
+            title="Evolusi Konvergensi Nilai Fitness per Generasi",
+            xaxis=dict(title="Generasi GA", tickmode='linear', tick0=1, dtick=1),
+            yaxis_title="Nilai Fitness Multi-Objektif",
+            height=400,
+            margin=dict(l=40, r=40, t=50, b=40),
+            legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1)
+        )
+        st.plotly_chart(fig_ga, use_container_width=True)
+
+        st.success("✓ **Analisis Konvergensi**: Populasi GA mulai konvergen pada **Generasi ke-6** dengan fitness tertinggi **1.7659** (setara error validasi terendah 0.5570 kW). Elitisme berhasil menjaga solusi terbaik hingga generasi ke-10.")
+
+    with tab2:
+        st.subheader("Status Seleksi 17 Kandidat Fitur & Lag")
+        st.markdown("Diagram status seleksi variabel listrik oleh Genetic Algorithm:")
+
+        # Buat dataframe status fitur
+        all_feats = ga_data['all_candidate_features']
+        selected_set = set(ga_data['selected_features'])
+        
+        status_labels = ['Terpilih (Lolos)' if f in selected_set else 'Dieliminasi (Redundan)' for f in all_feats]
+        bar_colors = ['#00e676' if f in selected_set else '#ef4444' for f in all_feats]
+        importance_score = [1.0 if f in selected_set else 0.3 for f in all_feats]
+
+        fig_bar = go.Figure(go.Bar(
+            y=all_feats,
+            x=importance_score,
+            orientation='h',
+            marker=dict(color=bar_colors),
+            text=status_labels,
+            textposition='auto',
+            hovertemplate="Fitur: <b>%{y}</b><br>Status: %{text}<extra></extra>"
+        ))
+
+        fig_bar.update_layout(
+            template='plotly_dark',
+            plot_bgcolor='rgba(15, 23, 42, 0.6)',
+            paper_bgcolor='rgba(15, 23, 42, 0.6)',
+            title="Daftar Fitur Terpilih (Hijau) vs Dieliminasi (Merah)",
+            xaxis_title="Status Seleksi GA",
+            yaxis=dict(autorange="reversed"),
+            height=520,
+            margin=dict(l=40, r=40, t=50, b=40)
+        )
+        st.plotly_chart(fig_bar, use_container_width=True)
+
+    with tab3:
+        st.subheader("🧬 Representasi Vektor Biner Kromosom Pemenang")
+        st.markdown("Visualisasi susunan gen biner (*chromosome string*) dari individu terbaik generasi ke-10:")
+
+        chrom_cols = st.columns(len(all_feats))
+        best_chrom = ga_data.get('best_chromosome', [1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0])
+
+        chrom_html = "<div style='display: flex; flex-wrap: wrap; gap: 8px; margin: 15px 0;'>"
+        for i, (f, bit) in enumerate(zip(all_feats, best_chrom)):
+            bg = "#00e676" if bit == 1 else "#374151"
+            txt_c = "#000000" if bit == 1 else "#9ca3af"
+            chrom_html += f"""
+            <div style="background: {bg}; color: {txt_c}; padding: 6px 12px; border-radius: 6px; font-size: 0.78rem; font-weight: 700;">
+                g{i+1}: {bit} &bull; {f}
+            </div>
+            """
+        chrom_html += "</div>"
+        st.markdown(chrom_html, unsafe_allow_html=True)
+
         st.markdown("""
-        - **Encoding Kromosom**: Biner 17 gen ($g_i \in \{0, 1\}$).
-        - **Ukuran Populasi**: 12 individu.
-        - **Jumlah Generasi**: 10 generasi evolusi.
-        - **Metode Seleksi**: *Tournament Selection* (ukuran $k=3$).
-        - **Crossover**: *Uniform Crossover* ($P_c = 0.8$).
-        - **Mutasi**: *Bit-flip Mutation* ($P_m = 1/17 \approx 0.059$).
-        - **Elitisme**: 2 individu terbaik langsung lolos ke generasi berikutnya.
+        **Hyperparameter Operator GA:**
+        - **Ukuran Populasi**: 12 Individu
+        - **Generasi**: 10 Generasi
+        - **Crossover**: *Uniform Crossover* ($P_c = 0.80$)
+        - **Mutasi**: *Bit-flip Mutation* ($P_m = 1/17 \approx 0.059$)
+        - **Seleksi**: *Tournament Selection* ($k=3$)
+        - **Elitisme**: 2 Individu Terbaik
         """)
-
-        st.markdown("**Fungsi Fitness Multi-Objektif:**")
-        st.latex(r"\text{Fitness}(C) = \frac{1}{\text{Val\_RMSE}(C) + 10^{-5}} - \alpha \times \left( \frac{\sum_{i=1}^{17} g_i}{17} \right)")
-        st.caption("Penalti kompleksitas α = 0.05 memprioritaskan model yang lebih ramping.")
-
-    with col_right:
-        st.subheader("📈 Kurva Konvergensi Fitness GA")
-        fig, ax = plt.subplots(figsize=(6, 4))
-        gens = range(1, len(ga_data['convergence_best_fitness']) + 1)
-        ax.plot(gens, ga_data['convergence_best_fitness'], marker='o', lw=2, color='#2ca02c', label='Best Fitness')
-        ax.plot(gens, ga_data['convergence_mean_fitness'], marker='s', lw=1.5, linestyle='--', color='#1f77b4', label='Mean Population')
-        ax.set_title('Konvergensi Fitness per Generasi', fontweight='bold', fontsize=10)
-        ax.set_xlabel('Generasi')
-        ax.set_ylabel('Nilai Fitness')
-        ax.grid(True, linestyle=':', alpha=0.6)
-        ax.legend()
-        plt.tight_layout()
-        st.pyplot(fig)
-        plt.close()
-
-    st.markdown("---")
-
-    # Tabel Fitur Terpilih vs Dieliminasi
-    st.subheader("📋 Analisis Fitur Terpilih vs Dieliminasi")
-    col_sel, col_elim = st.columns(2)
-
-    with col_sel:
-        st.success(f"**✓ Fitur Terpilih ({len(ga_data['selected_features'])} Fitur):**")
-        for f in ga_data['selected_features']:
-            st.markdown(f"- `{f}`")
-
-    with col_elim:
-        st.error(f"**✗ Fitur Dieliminasi ({len(ga_data['eliminated_features'])} Fitur):**")
-        for f in ga_data['eliminated_features']:
-            st.markdown(f"- `{f}`")
-
-    st.info("""
-    🧠 **Interpretasi AI & Rekayasa Sistem Tenaga**:
-    - GA mempertahankan `gap_lag_1` (beban 1 jam lalu) dan `gap_lag_24` (siklus 24 jam) karena keduanya merupakan prediktor autoregresif terkuat.
-    - Sebaliknya, `Global_intensity` (arus listrik dalam Ampere) dieliminasi karena redundan terhadap `Global_active_power` melalui hubungan hukum Ohm ($P = V \cdot I \cdot \cos\phi$).
-    """)

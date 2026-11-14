@@ -1,9 +1,10 @@
 # ⚡ Household Electricity Load Forecasting: Hybrid Intelligent System
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://household-load-kelompok6-itk.streamlit.app)
 [![Python](https://img.shields.io/badge/Python-3.10%20%7C%203.11-blue.svg)](https://www.python.org/)
 [![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange.svg)](https://tensorflow.org/)
 [![Institution](https://img.shields.io/badge/ITK-Teknik%20Elektro-green.svg)](https://itk.ac.id/)
+[![Live App](https://img.shields.io/badge/Live%20Demo-Streamlit%20Cloud-ff4b4b.svg)](https://household-load-kelompok6-itk.streamlit.app)
 
 Sistem Peramalan Beban Listrik Rumah Tangga Berbasis Hibrida: **Genetic Algorithm (GA)** + **Particle Swarm Optimization (PSO)** + **Long Short-Term Memory (LSTM)** + **Mamdani Fuzzy Inference System (FIS)** terintegrasi dengan **Dashboard Streamlit**.
 
@@ -88,8 +89,8 @@ Fuzzy Inference System mengelompokkan hasil peramalan menjadi 5 tingkat kebutuha
 
 1. **Clone Repositori**:
    ```bash
-   git clone https://github.com/<username>/household-electricity-forecasting.git
-   cd household-electricity-forecasting
+   git clone https://github.com/Loowchall/household-load-forecasting-itk.git
+   cd household-load-forecasting-itk
    ```
 
 2. **Buat Virtual Environment & Install Dependensi**:
