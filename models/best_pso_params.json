@@ -1,13 +1,32 @@
 {
-    "best_hyperparameters": {
-        "sequence_length": 32,
-        "lstm_units": 32,
-        "dropout_rate": 0.1,
-        "learning_rate": 0.00198,
-        "batch_size": 32
-    },
-    "gbest_validation_rmse": 0.5528,
-    "search_time_seconds": 615.4,
-    "swarm_particles": 8,
-    "iterations": 6
+  "pso_C": {
+    "target_model": "Model C (All 18 Features)",
+    "seq_len": 17,
+    "units": 56,
+    "dropout": 0.161,
+    "learning_rate": 0.00373,
+    "batch_size": 32,
+    "best_val_rmse": 0.5627,
+    "particles": 8,
+    "iterations": 6,
+    "search_time_s": 297.6
+  },
+  "pso_D": {
+    "target_model": "Model D (13 GA Selected Features)",
+    "seq_len": 31,
+    "units": 32,
+    "dropout": 0.196,
+    "learning_rate": 0.00360,
+    "batch_size": 32,
+    "best_val_rmse": 0.5658,
+    "particles": 8,
+    "iterations": 6,
+    "search_time_s": 525.0
+  },
+  "final_chosen": "Model D",
+  "optimal_sequence_length": 31,
+  "optimal_units": 32,
+  "optimal_dropout": 0.196,
+  "optimal_learning_rate": 0.00360,
+  "optimal_batch_size": 32
 }

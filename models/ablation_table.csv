@@ -1,0 +1,6 @@
+Konfigurasi,Fitur,RMSE test (kW),MAE test (kW),R² test,Keputusan fuzzy,Kesesuaian keputusan (%)
+Model A - Baseline LSTM,18,0.4684 ± 0.0027,0.3214 ± 0.0024,0.5707 ± 0.0049,-,-
+Model B - GA + LSTM,13,0.4659 ± 0.0004,0.3208 ± 0.0043,0.5752 ± 0.0007,-,-
+Model C - PSO + LSTM,18,0.4645 ± 0.0068,0.3204 ± 0.0077,0.5778 ± 0.0123,-,-
+Model D - GA + PSO + LSTM,13,0.4762 ± 0.0186,0.3324 ± 0.0026,0.5559 ± 0.0346,-,-
+Model E - D + Fuzzy,13,0.4762 ± 0.0186,0.3324 ± 0.0026,0.5559 ± 0.0346,5 status,37.6 (±1 tingkat: 85.7)

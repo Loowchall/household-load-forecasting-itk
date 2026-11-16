@@ -1,0 +1,11 @@
+Skenario,P (kW),dP (kW),Skor,Status,Aturan aktif
+"Ekstrem: beban 0 kW, turun drastis",0.0,-5.0,10.81,Very Low,1
+"Ekstrem: beban 0 kW, naik drastis",0.0,5.0,30.0,Low,1
+"Ekstrem: beban 7 kW, naik drastis",7.0,5.0,89.19,Peak,1
+"Ekstrem: beban 7 kW, turun drastis",7.0,-5.0,70.0,High,1
+Malam / rumah kosong,0.25,-0.05,11.07,Very Low,2
+Pagi / standby,0.6,0.05,39.0,Low,4
+Siang normal,1.3,0.1,57.63,Normal,4
+Sore memasak (lonjakan),2.8,0.9,88.7,Peak,2
+Puncak malam,4.5,0.3,87.41,Peak,2
+Pasca puncak (ramp down),3.2,-1.2,70.0,High,1

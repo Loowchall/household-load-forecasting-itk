@@ -1,0 +1,19 @@
+Fitur,Sebelum GA,Setelah GA,Dipilih di 2 run
+Global_active_power,✓,✓,2
+Global_reactive_power,✓,✓,1
+Voltage,✓,✗,1
+Global_intensity,✓,✓,2
+Sub_metering_1,✓,✗,1
+Sub_metering_2,✓,✗,0
+Sub_metering_3,✓,✓,1
+Sub_metering_remainder,✓,✓,1
+gap_lag_1,✓,✗,0
+gap_lag_2,✓,✓,1
+gap_lag_3,✓,✗,0
+gap_lag_24,✓,✓,1
+rolling_mean_24h,✓,✓,1
+hour_sin,✓,✓,1
+hour_cos,✓,✓,2
+dow_sin,✓,✓,1
+dow_cos,✓,✓,2
+is_weekend,✓,✓,2

@@ -47,11 +47,12 @@ def render():
 
     st.markdown("---")
 
-    tab1, tab2, tab3, tab4 = st.tabs([
+    tab1, tab2, tab3, tab4, tab5 = st.tabs([
         "📈 Runtun Waktu Interaktif (Plotly)",
         "🥧 Proporsi Konsumsi Energi (Sub-metering)",
         "⏰ Pola Beban Diurnal (Jam 00 - 23)",
-        "🔥 Matriks Korelasi Variabel Listrik"
+        "🔥 Matriks Korelasi Variabel Listrik",
+        "🖼️ Grafik Asli Google Colab v2"
     ])
 
     with tab1:
@@ -208,4 +209,27 @@ def render():
                 height=450
             )
             st.plotly_chart(fig_corr, use_container_width=True)
-            st.caption("Perhatikan korelasi antara `Global_active_power` dan `Global_intensity` mendekati 1.00 (multikolinear sempurna). Inilah alasan fisis mengapa GA mengeliminasi `Global_intensity`.")
+            st.caption("Perhatikan korelasi antara `Global_active_power` dan `Global_intensity` mendekati 1.00 (multikolinear kuat).")
+
+    with tab5:
+        st.subheader("🖼️ Grafik Eksplorasi Data Asli Google Colab (models/figures)")
+        st.markdown("Berikut adalah visualisasi resolusi tinggi yang dihasilkan langsung oleh kode Google Colab (Sel 6):")
+
+        col_g1, col_g2 = st.columns(2)
+        with col_g1:
+            p_ts = Path("models/figures/eda_timeseries.png")
+            if p_ts.exists():
+                st.image(str(p_ts), caption="1. Rata-Rata Harian & Profil Dua Minggu Pertama (eda_timeseries.png)", use_container_width=True)
+            
+            p_m = Path("models/figures/eda_bulanan.png")
+            if p_m.exists():
+                st.image(str(p_m), caption="3. Rata-Rata Bulanan - Pola Musiman Dingin vs Panas (eda_bulanan.png)", use_container_width=True)
+
+        with col_g2:
+            p_dist = Path("models/figures/eda_distribusi_profil.png")
+            if p_dist.exists():
+                st.image(str(p_dist), caption="2. Distribusi Beban, Profil Jam Sehari, & Profil Hari (eda_distribusi_profil.png)", use_container_width=True)
+
+            p_corr = Path("models/figures/eda_korelasi.png")
+            if p_corr.exists():
+                st.image(str(p_corr), caption="4. Matriks Korelasi Lengkap Seluruh Fitur (eda_korelasi.png)", use_container_width=True)

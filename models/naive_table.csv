@@ -1,0 +1,4 @@
+Metode,MAE (kW),RMSE (kW),R²
+Naif: sama dengan jam sebelumnya,0.3904,0.59,0.319
+Naif: sama dengan 24 jam lalu,0.5158,0.7666,-0.1498
+Naif: rata-rata 24 jam terakhir,0.5376,0.6846,0.0831
