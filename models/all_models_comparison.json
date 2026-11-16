@@ -3,6 +3,7 @@
         "Model": "Model A (Baseline LSTM)",
         "Fitur": 18,
         "Window": "24h",
+        "Window (jam)": 24,
         "Units": 32,
         "Dropout": 0.100,
         "LR": "0.0010",
@@ -13,6 +14,7 @@
         "RMSE (kW)": 0.4684,
         "RMSE_std": 0.0027,
         "R2 Score": 0.5707,
+        "R² Score": 0.5707,
         "R2_std": 0.0049,
         "RMSE val (kW)": 0.5233,
         "Waktu (s)": 71.3
@@ -21,6 +23,7 @@
         "Model": "Model B (GA + LSTM)",
         "Fitur": 13,
         "Window": "24h",
+        "Window (jam)": 24,
         "Units": 32,
         "Dropout": 0.100,
         "LR": "0.0010",
@@ -31,6 +34,7 @@
         "RMSE (kW)": 0.4659,
         "RMSE_std": 0.0004,
         "R2 Score": 0.5752,
+        "R² Score": 0.5752,
         "R2_std": 0.0007,
         "RMSE val (kW)": 0.5218,
         "Waktu (s)": 79.1
@@ -39,6 +43,7 @@
         "Model": "Model C (PSO + LSTM)",
         "Fitur": 18,
         "Window": "17h",
+        "Window (jam)": 17,
         "Units": 56,
         "Dropout": 0.161,
         "LR": "0.0037",
@@ -49,6 +54,7 @@
         "RMSE (kW)": 0.4645,
         "RMSE_std": 0.0068,
         "R2 Score": 0.5778,
+        "R² Score": 0.5778,
         "R2_std": 0.0123,
         "RMSE val (kW)": 0.5196,
         "Waktu (s)": 101.5
@@ -57,6 +63,7 @@
         "Model": "Model D (GA + PSO + LSTM)",
         "Fitur": 13,
         "Window": "31h",
+        "Window (jam)": 31,
         "Units": 32,
         "Dropout": 0.196,
         "LR": "0.0036",
@@ -67,6 +74,7 @@
         "RMSE (kW)": 0.4762,
         "RMSE_std": 0.0186,
         "R2 Score": 0.5559,
+        "R² Score": 0.5559,
         "R2_std": 0.0346,
         "RMSE val (kW)": 0.5363,
         "Waktu (s)": 104.0

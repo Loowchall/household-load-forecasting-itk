@@ -22,6 +22,26 @@
     "dow_cos",
     "is_weekend"
   ],
+  "all_candidate_features": [
+    "Global_active_power",
+    "Global_reactive_power",
+    "Voltage",
+    "Global_intensity",
+    "Sub_metering_1",
+    "Sub_metering_2",
+    "Sub_metering_3",
+    "Sub_metering_remainder",
+    "gap_lag_1",
+    "gap_lag_2",
+    "gap_lag_3",
+    "gap_lag_24",
+    "rolling_mean_24h",
+    "hour_sin",
+    "hour_cos",
+    "dow_sin",
+    "dow_cos",
+    "is_weekend"
+  ],
   "selected_features": [
     "Global_active_power",
     "Global_reactive_power",
@@ -37,6 +57,13 @@
     "dow_cos",
     "is_weekend"
   ],
+  "eliminated_features": [
+    "Voltage",
+    "Sub_metering_1",
+    "Sub_metering_2",
+    "gap_lag_1",
+    "gap_lag_3"
+  ],
   "pruned_features": [
     "Voltage",
     "Sub_metering_1",
@@ -47,6 +74,9 @@
   "best_chromosome": [1, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1],
   "best_fitness": -0.6017,
   "best_val_rmse": 0.5873,
+  "convergence_best_fitness": [-0.6101, -0.6101, -0.6101, -0.6101, -0.6017, -0.6017, -0.6017, -0.6017],
+  "convergence_mean_fitness": [-0.6526, -0.6342, -0.6224, -0.6244, -0.6161, -0.6215, -0.6160, -0.6226],
+  "search_time_seconds": 262.0,
   "generations_run": 8,
   "selected_seed": 7
 }

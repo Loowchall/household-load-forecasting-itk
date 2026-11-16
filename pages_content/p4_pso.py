@@ -36,15 +36,22 @@ def render():
             "pso_D": {"seq_len": 31, "units": 32, "dropout": 0.196, "learning_rate": 0.00360, "batch_size": 32, "best_val_rmse": 0.5658}
         }
 
-    p_c = pso_data.get("pso_C", {})
-    p_d = pso_data.get("pso_D", {})
+    p_c = pso_data.get("pso_C") or {}
+    p_d = pso_data.get("pso_D") or {}
+    best_hp = pso_data.get("best_hyperparameters") or {}
+
+    seq_d = p_d.get("seq_len") or best_hp.get("sequence_length") or pso_data.get("optimal_sequence_length", 31)
+    seq_c = p_c.get("seq_len") or 17
+    units_d = p_d.get("units") or best_hp.get("lstm_units") or pso_data.get("optimal_units", 32)
+    units_c = p_c.get("units") or 56
+    lr_d = p_d.get("learning_rate") or best_hp.get("learning_rate") or pso_data.get("optimal_learning_rate", 0.00360)
 
     # Metric Cards
     c1, c2, c3, c4 = st.columns(4)
-    c1.metric("Window Model D (PSO)", f"{p_d.get('seq_len', 31)} Jam", delta="+7 jam vs Baseline")
-    c2.metric("Window Model C (PSO)", f"{p_c.get('seq_len', 17)} Jam", delta="-7 jam vs Baseline")
-    c3.metric("Units Model C / D", f"{p_c.get('units', 56)} / {p_d.get('units', 32)}")
-    c4.metric("Learning Rate Optimal", f"{p_d.get('learning_rate', 0.00360):.5f}")
+    c1.metric("Window Model D (PSO)", f"{seq_d} Jam", delta="+7 jam vs Baseline")
+    c2.metric("Window Model C (PSO)", f"{seq_c} Jam", delta="-7 jam vs Baseline")
+    c3.metric("Units Model C / D", f"{units_c} / {units_d}")
+    c4.metric("Learning Rate Optimal", f"{lr_d:.5f}")
 
     st.markdown("---")
 

@@ -43,11 +43,18 @@ def render():
         }
 
     # Metric Header Cards
+    all_feats = ga_data.get('all_features') or ga_data.get('all_candidate_features') or []
+    sel_feats = ga_data.get('selected_features') or []
+    pruned_feats = ga_data.get('pruned_features') or ga_data.get('eliminated_features') or []
+    best_fit = ga_data.get('best_fitness', -0.6017)
+    best_val_rmse = ga_data.get('best_val_rmse', 0.5873)
+    sel_seed = ga_data.get('selected_seed', 7)
+
     m1, m2, m3, m4 = st.columns(4)
-    m1.metric("Kandidat Fitur Awal", len(ga_data.get('all_features', [])), "18 Variabel Input")
-    m2.metric("Fitur Terpilih (GA)", len(ga_data.get('selected_features', [])), delta="-5 Fitur Redundan")
-    m3.metric("Best Val RMSE", f"{ga_data.get('best_val_rmse', 0.5873):.4f} kW", "Proxy Evaluator")
-    m4.metric("Best Fitness Terpilih", f"{ga_data.get('best_fitness', -0.6017):.4f}", f"Seed {ga_data.get('selected_seed', 7)}")
+    m1.metric("Kandidat Fitur Awal", len(all_feats), "18 Variabel Input")
+    m2.metric("Fitur Terpilih (GA)", len(sel_feats), delta=f"-{len(pruned_feats)} Fitur Redundan")
+    m3.metric("Best Val RMSE", f"{best_val_rmse:.4f} kW", "Proxy Evaluator")
+    m4.metric("Best Fitness Terpilih", f"{best_fit:.4f}", f"Seed {sel_seed}")
 
     st.markdown("---")
 

@@ -1,4 +1,16 @@
 {
+  "best_hyperparameters": {
+    "sequence_length": 31,
+    "lstm_units": 32,
+    "dropout_rate": 0.196,
+    "learning_rate": 0.00360,
+    "batch_size": 32
+  },
+  "gbest_validation_rmse": 0.5658,
+  "convergence_gbest_history": [0.5780, 0.5715, 0.5670, 0.5658, 0.5658, 0.5658],
+  "search_time_seconds": 525.0,
+  "swarm_particles": 8,
+  "iterations": 6,
   "pso_C": {
     "target_model": "Model C (All 18 Features)",
     "seq_len": 17,
